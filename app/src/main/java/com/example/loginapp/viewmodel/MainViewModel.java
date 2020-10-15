@@ -10,9 +10,9 @@ import com.example.loginapp.model.LoginUser;
 public class MainViewModel extends ViewModel {
     private final MutableLiveData<String> username = new MediatorLiveData<>();
     private final MutableLiveData<String> password = new MediatorLiveData<>();
-    /**
-     * Expose MutableLiveData to use two-way data binding
-     */
+
+     // Expose MutableLiveData to use two-way data binding
+
     private MutableLiveData<LoginUser>loginUserMutableLiveData=new MutableLiveData<>();
     public MutableLiveData<String> getUsername() {
         return username;
@@ -21,7 +21,7 @@ public class MainViewModel extends ViewModel {
         return password;
     }
     public void getUser() {
-        Observer observer = new Observer<LoginUser>() {
+        Observer<LoginUser> observer = new Observer<LoginUser>() {
             @Override
             public void onChanged(LoginUser loginUser) {
                 username.setValue(loginUser == null ? null : loginUser.getUsername());

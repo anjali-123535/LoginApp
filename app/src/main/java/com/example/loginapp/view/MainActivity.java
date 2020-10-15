@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private MainViewModel mainViewModel;
     private static final String IS_USER_LOGIN = "IsUserLoggedIn";
     public static final String MyPREFERENCES = "MyPrefs" ;
-    //@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    //@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
@@ -43,12 +41,14 @@ public class MainActivity extends AppCompatActivity {
                mainViewModel=ViewModelProviders.of(this).get(MainViewModel.class);
                activityMainBinding.setMain(mainViewModel);
                activityMainBinding.setLifecycleOwner(this);
+
               activityMainBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      mainViewModel.getUser();
+                    //  mainViewModel.getUser();
                        String username=mainViewModel.getUsername().getValue();
                        String password=mainViewModel.getPassword().getValue();
+                       //checking if both the entries are filled or not
                       if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password))
                           Toast.makeText(getApplicationContext(),"Please fill both the fields",Toast.LENGTH_SHORT).show();
                       else{
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                           editor.putBoolean(IS_USER_LOGIN,true);
                           editor.apply();
                           Log.d(TAG,"User created"+sharedPreferences.getString("username",""));
+                          //if the user entered both the entries he will be directed to Profile Activity
                           Intent i= new Intent(MainActivity.this,ProfileActivity.class);
                           i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 

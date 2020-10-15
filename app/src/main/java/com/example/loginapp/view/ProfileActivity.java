@@ -23,6 +23,7 @@ SharedPreferences sharedPreferences;
           activityProfileBinding=DataBindingUtil.setContentView(this,R.layout.activity_profile);
          sharedPreferences=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         activityProfileBinding.setUsername(sharedPreferences.getString("username","Username"));
+        //the logout functionality will clear the user session so he will be redirected to the Login activity
          activityProfileBinding.btnLogout.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
@@ -48,6 +49,7 @@ SharedPreferences sharedPreferences;
     @Override
     protected void onResume() {
         super.onResume();
+        //checking if user is already logged in
         if (!isUserLoggedIn()) {
             // user is not logged in redirect him to Login Activity
             Intent i = new Intent(this, MainActivity.class);
