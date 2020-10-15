@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="username"
+            type="String" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:context=".view.ProfileActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="181dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:text="@{`Hello `+username+` !!`}"
+            android:textSize="45sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="25sp"
+            android:id="@+id/btn_logout"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/edittextbackground"
+            android:layout_gravity="center"
+            android:text="Logout"/>
+    </LinearLayout>
+</layout>
